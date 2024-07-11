@@ -1,0 +1,21 @@
+
+//Below code is called as checma
+
+{
+    
+    title:{
+        type:String
+    },
+    description:{
+        type:String
+    }
+    company:{
+        type:String
+    },
+    location:{
+        type:String
+    },
+    salary:{
+        type:Number
+    }
+}
