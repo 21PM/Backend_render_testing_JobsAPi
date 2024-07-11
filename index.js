@@ -3,7 +3,7 @@ const jobroutes = require("./Routes/jobroutes");
 const mongoose = require("mongoose")
 const app =  express();
 
-mongoose.connect("mongodb://localhost:27017/job_app ")
+mongoose.connect("mongodb+srv://parasmore33:IfvshLytNwtpDkoK@cluster0.lhd2pa2.mongodb.net/")
 .then(()=>console.log("DB connected sucessfully"))
 .catch((err)=>console.log("Error connecting db",err))
 
