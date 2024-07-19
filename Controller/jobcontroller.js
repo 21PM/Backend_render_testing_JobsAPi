@@ -21,9 +21,7 @@ const createJob = async (req,res,next) =>{
 
     const listJob = async (req,res,next) =>{
         try{   let min = req.query.min;
-            const jobsList = await jobModel.find({
-                salary:{$gte:min}
-            });
+            const jobsList = await jobModel.find();
             res.json({
                 status:true,
                 message:"list api called",
@@ -46,16 +44,14 @@ const createJob = async (req,res,next) =>{
         const filterObj = {
             salary:{
                 $gte:120000
-                
-
             }
         };
         
         try{
             
-            // const response = await jobModel.findByIdAndUpdate(req.params.id,updatedObj)
+            const response = await jobModel.findByIdAndUpdate(req.params.id,updatedObj)
 
-            const response = await jobModel.updateMany(filterObj,updatedObj)
+            // const response = await jobModel.updateMany(filterObj,updatedObj)
 
             if(response){
                 res.status(200).json({
@@ -80,7 +76,11 @@ const createJob = async (req,res,next) =>{
         
     }
 
-    const deleteJob = (req,res,next) =>{
+    const deleteJob = async (req,res,next) =>{
+
+        const jobid = req.params.id
+        
+        const deleted = await jobModel.findByIdAndDelete(jobid)
         res.json({
             message:"DeleteJob api has been called"
         })
